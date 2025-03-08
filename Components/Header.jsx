@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,14 +13,23 @@ const Header = () => {
         
         {/* Logo */}
         <Link href="/">
-          <span className="text-3xl font-bold text-[#FFD700] cursor-pointer">
-            MediCare
+          <span className="text-3xl font-bold text-[#FFD700] cursor-pointer flex gap-8">
+            <Image src="/doctor.jpg" alt="Logo" width={40} height={40} />MediCare
           </span>
         </Link>
-
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8 text-white font-medium">
-          {["Home", "Book Appointment", "Services", "About", "Contact"].map((item) => (
+        <nav className="hidden md:flex text-white font-medium">
+          <Link href="/">
+            <span className="relative text-white px-5 py-2 transition-all duration-300 hover:border-b-2 hover:border-[#FFD700]">
+              Home
+            </span>
+          </Link>
+          <Link href="/login">
+            <span className="relative text-white px-5 py-2 transition-all duration-300 hover:border-b-2 hover:border-[#FFD700]">
+              Book Appointment
+            </span>
+          </Link>
+          {[ "Government Scheme", "Services", "About", "Contact"].map((item) => (
             <Link key={item} href={`/${item.toLowerCase().replace(/ /g, "")}`}>
               <span className="relative text-white px-5 py-2 transition-all duration-300 hover:border-b-2 hover:border-[#FFD700]">
                 {item}
@@ -33,12 +44,7 @@ const Header = () => {
             <button className="w-32 border border-gray-500 text-black hover:bg-[#28A745] hover:text-white px-4 py-2 rounded-lg transition-all duration-300 bg-[#FFD700] hover:shadow-lg hover:scale-105">
               Login
             </button>
-          </Link>
-          <Link href="/signup">
-            <button className="w-32 bg-[#FFD700] hover:bg-[#28A745] text-black hover:text-white px-5 py-2 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:scale-110">
-              Sign Up
-            </button>
-          </Link>
+          </Link> 
         </div>
 
         {/* Mobile Menu Button */}
@@ -51,7 +57,13 @@ const Header = () => {
       {isOpen && (
         <div className="md:hidden bg-black absolute w-full py-6 transition-all">
           <nav className="flex flex-col items-center space-y-6 text-white font-medium">
-            {["Home", "Book Appointment", "Services", "About", "Contact"].map((item) => (
+            <Link href="/" className="text-lg transition-all duration-300 hover:border-b-2 hover:border-[#FFD700]" onClick={() => setIsOpen(false)}>
+              Home
+            </Link>
+            <Link href="/login" className="text-lg transition-all duration-300 hover:border-b-2 hover:border-[#FFD700]" onClick={() => setIsOpen(false)}>
+              Book Appointment
+            </Link>
+            {[ "Government Scheme", "Services", "About", "Contact"].map((item) => (
               <Link key={item} href={`/${item.toLowerCase().replace(/ /g, "")}`} className="text-lg transition-all duration-300 hover:border-b-2 hover:border-[#FFD700]" onClick={() => setIsOpen(false)}>
                 {item}
               </Link>
@@ -60,11 +72,6 @@ const Header = () => {
             <Link href="/login">
               <button className="w-32 border border-yellow-500  text-black px-4 py-2 rounded-lg transition-all duration-300 bg-[#FFD700] hover:shadow-lg hover:scale-105">
                 Login
-              </button>
-            </Link>
-            <Link href="/signup">
-              <button className="w-32 bg-[#FFD700]  text-black px-5 py-2 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:scale-110">
-                Sign Up
               </button>
             </Link>
           </nav>

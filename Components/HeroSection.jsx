@@ -17,7 +17,7 @@ export default function HomeSection() {
           Your Health, Our Priority. Trusted medical care with expert doctors.
         </p>
         <Link
-          href="/appointments"
+          href="/login"
           className="mt-6 px-8 py-4 bg-[#FFD700] hover:bg-[#28A745] text-black hover:text-white text-lg font-semibold rounded-lg shadow-lg flex items-center gap-2 transition transform hover:scale-105"
         >
           Book an Appointment <ArrowRight size={22} />
@@ -94,9 +94,9 @@ export default function HomeSection() {
         <p className="mt-4 text-xl text-gray-100 max-w-2xl mx-auto">
           Get personalized healthcare services from the best medical professionals.
         </p>
-        <button className="mt-6 px-8 py-3 bg-[#FFD700] hover:bg-[#28A745] text-black text-lg font-bold rounded-lg shadow-lg flex items-center gap-2 transition transform hover:scale-110">
+        <Link href="/login" className="mt-6 px-8 py-3 bg-[#FFD700] hover:bg-[#28A745] text-black text-lg font-bold rounded-lg shadow-lg flex items-center gap-2 transition transform hover:scale-110">
           Book an Appointment <ArrowRight size={24} />
-        </button>
+        </Link>
       </section>
     </div>
   );
